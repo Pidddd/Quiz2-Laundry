@@ -77,6 +77,10 @@ public class LaundryDesk {
      * @param orderId kode pesanan laundry yang di-checkout
      */
     public void checkout(String orderId) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        LaundryOrder order = findById(orderId);
+        if (order != null) {
+            double price = order.calculatePrice();
+            printer.print(orderId, price);
+        }
     }
 }
